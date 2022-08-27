@@ -77,6 +77,7 @@ public class SellerDaoJDBC implements SellerDao{
                 st.setDouble(4, obj.getBaseSalary());
                 st.setInt(5, obj.getDepartment().getId());
                 st.setInt(6, obj.getId());
+                st.executeUpdate();
 
                 System.out.println("Update completed");
 
@@ -147,7 +148,7 @@ public class SellerDaoJDBC implements SellerDao{
         return obj;
     }
 
-    private Department instantiateDepartment(ResultSet rs) throws SQLException{
+    protected Department instantiateDepartment(ResultSet rs) throws SQLException{
         Department dep = new Department();
         dep.setId(rs.getInt("DepartmentId"));
         dep.setName(rs.getString("DepName"));
